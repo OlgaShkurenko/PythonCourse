@@ -1,5 +1,10 @@
 from tkinter import *
 import backend
+
+def view_command():
+    for row in backend.view():
+        list1.insert(END,row)
+
 window = Tk()
 
 l1 = Label(window, text="Name")
@@ -30,7 +35,7 @@ group_text = StringVar()
 e4=Entry(window, textvariable=group_text)
 e4.grid(row=1, column=3)
 
-list1 = Listbox(window, height=6, width=35)
+list1 = Listbox(window, height=6, width=45)
 list1.grid(row=2, column=0, rowspan=6, columnspan=2)
 
 sb1 = Scrollbar(window)
@@ -39,7 +44,7 @@ sb1.grid(row=2, column=2, rowspan=6)
 list1.config(yscrollcommand=sb1.set)
 sb1.config(command=list1.yview)
 
-b1 = Button(window, text="View all", width=12)
+b1 = Button(window, text="View all", width=12, command=view_command)
 b1.grid(row=2, column=3)
 
 b2 = Button(window, text="Search entry", width=12)
